@@ -10,15 +10,15 @@ class MainClass extends Component {
   };
   handleState = ev => {
     console.log(ev);
-    this.setState(prevstate => {
-      return (this.state.good = prevstate.good + 1);
-    });
-    this.setState(prevstate => {
-      return (this.state.neutral = prevstate.neutral + 1);
-    });
-    this.setState(prevstate => {
-      return (this.state.bad = prevstate.bad + 1);
-    });
+    this.setState(prevstate => ({
+      good: prevstate.good + 1,
+    }));
+    this.setState(prevstate => ({
+      neutral: prevstate.neutral + 1,
+    }));
+    this.setState(prevstate => ({
+      bad: prevstate.bad + 1,
+    }));
   };
   render() {
     return (
