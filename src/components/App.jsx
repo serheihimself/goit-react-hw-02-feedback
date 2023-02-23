@@ -8,38 +8,18 @@ class MainClass extends Component {
     neutral: 0,
     bad: 0,
   };
-  handleState = () => {
+  handleState = ev => {
     this.setState(prevstate => ({
-      good: prevstate.good + 1,
-      neutral: prevstate.neutral + 1,
-      bad: prevstate.bad + 1,
+      [ev]: prevstate[ev] + 1,
     }));
   };
   render() {
     return (
       <BoxStats>
         <h2>Please leave feedback</h2>
-        <button
-          onClick={() => {
-            this.handleState('good');
-          }}
-        >
-          Good
-        </button>
-        <button
-          onClick={() => {
-            this.handleState('neutral');
-          }}
-        >
-          Neutral
-        </button>
-        <button
-          onClick={() => {
-            this.handleState('bad');
-          }}
-        >
-          Bad
-        </button>
+        <button onClick={() => this.handleState('good')}>Good</button>
+        <button onClick={() => this.handleState('neutral')}>Neutral</button>
+        <button onClick={() => this.handleState('bad')}>Bad</button>
         <h2>Statistics</h2>
         <ul style={{ listStyle: 'none' }}>
           <li>
