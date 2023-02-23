@@ -19,9 +19,27 @@ class MainClass extends Component {
     return (
       <BoxStats>
         <h2>Please leave feedback</h2>
-        <button onClick={this.handleState}>Good</button>
-        <button onClick={this.handleState}>Neutral</button>
-        <button onClick={this.handleState}>Bad</button>
+        <button
+          onClick={() => {
+            this.handleState('good');
+          }}
+        >
+          Good
+        </button>
+        <button
+          onClick={() => {
+            this.handleState('neutral');
+          }}
+        >
+          Neutral
+        </button>
+        <button
+          onClick={() => {
+            this.handleState('bad');
+          }}
+        >
+          Bad
+        </button>
         <h2>Statistics</h2>
         <ul style={{ listStyle: 'none' }}>
           <li>
