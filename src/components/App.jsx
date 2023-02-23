@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Statistics from './Statisctics';
+// import Statistics from './Statisctics';
 import { BoxStats } from './Statistics.styles';
 
 class MainClass extends Component {
@@ -8,15 +8,10 @@ class MainClass extends Component {
     neutral: 0,
     bad: 0,
   };
-  handleState = ev => {
-    console.log(ev);
+  handleState = () => {
     this.setState(prevstate => ({
       good: prevstate.good + 1,
-    }));
-    this.setState(prevstate => ({
       neutral: prevstate.neutral + 1,
-    }));
-    this.setState(prevstate => ({
       bad: prevstate.bad + 1,
     }));
   };
