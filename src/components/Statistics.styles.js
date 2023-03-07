@@ -4,7 +4,7 @@ export const BoxStats = styled.div`
   width: 320px;
   margin: auto;
   margin-top: 20px;
-  padding: 20px;
+  padding: 10px 0;
   text-align: center;
   background: #e6e6fa;
   border-radius: 10px;

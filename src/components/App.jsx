@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-// import Statistics from './Statisctics';
+import Statistics from './Statisctics';
+import FeedbackOptions from './FeedbackOptions';
+import Section from './Section';
+import Notification from './Notification';
 import { BoxStats } from './Statistics.styles';
 
 class MainClass extends Component {
@@ -13,25 +16,39 @@ class MainClass extends Component {
       [ev]: prevstate[ev] + 1,
     }));
   };
+
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100) || 0;
+  };
+
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
       <BoxStats>
-        <h2>Please leave feedback</h2>
-        <button onClick={() => this.handleState('good')}>Good</button>
-        <button onClick={() => this.handleState('neutral')}>Neutral</button>
-        <button onClick={() => this.handleState('bad')}>Bad</button>
-        <h2>Statistics</h2>
-        <ul style={{ listStyle: 'none' }}>
-          <li>
-            <p>Good: {this.state.good}</p>
-          </li>
-          <li>
-            <p>Netral: {this.state.neutral}</p>
-          </li>
-          <li>
-            <p>Bad: {this.state.bad}</p>
-          </li>
-        </ul>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            good={() => this.handleState('good')}
+            neutral={() => this.handleState('neutral')}
+            bad={() => this.handleState('bad')}
+          />
+          {total !== 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </BoxStats>
     );
   }
