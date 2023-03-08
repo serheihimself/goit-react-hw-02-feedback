@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Statisctics({ good, neutral, bad, total, positivePercentage }) {
   return (
@@ -24,5 +25,13 @@ function Statisctics({ good, neutral, bad, total, positivePercentage }) {
     </>
   );
 }
+
+Statisctics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
 
 export default Statisctics;
