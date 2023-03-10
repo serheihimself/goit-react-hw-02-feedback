@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function FeedbackOptions({ good, neutral, bad }) {
+function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <>
-      <button onClick={good}>Good</button>
-      <button onClick={neutral}>Neutral</button>
-      <button onClick={bad}>Bad</button>
+      {options.map(option => (
+        <button key={option} onClick={() => onLeaveFeedback(option)}>
+          {option}
+        </button>
+      ))}
     </>
   );
 }
@@ -18,3 +20,7 @@ FeedbackOptions.propTypes = {
 };
 
 export default FeedbackOptions;
+
+// <button onClick={good}>Good</button>
+//       <button onClick={neutral}>Neutral</button>
+//       <button onClick={bad}>Bad</button>

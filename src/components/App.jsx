@@ -11,9 +11,9 @@ class MainClass extends Component {
     neutral: 0,
     bad: 0,
   };
-  handleState = ev => {
+  handleState = option => {
     this.setState(prevstate => ({
-      [ev]: prevstate[ev] + 1,
+      [option]: prevstate[option] + 1,
     }));
   };
 
@@ -33,9 +33,8 @@ class MainClass extends Component {
       <BoxStats>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            good={() => this.handleState('good')}
-            neutral={() => this.handleState('neutral')}
-            bad={() => this.handleState('bad')}
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.handleState}
           />
           {total !== 0 ? (
             <Statistics
